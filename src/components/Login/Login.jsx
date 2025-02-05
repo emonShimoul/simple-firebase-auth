@@ -50,6 +50,7 @@ const Login = () => {
 
   return (
     <div>
+      <h2 className="text-4xl">Login</h2>
       {user ? (
         <button onClick={handleSignOut}>Sign Out</button>
       ) : (
