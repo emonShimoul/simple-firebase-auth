@@ -1,8 +1,12 @@
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+    console.log(e.target.email.value);
+  };
   return (
     <div className="max-w-lg mx-auto">
       <h2 className="text-4xl my-8">Register</h2>
-      <form action="">
+      <form onSubmit={handleRegister}>
         <label className="input validator mb-4">
           <svg
             className="h-[1em] opacity-50"
@@ -20,7 +24,7 @@ const Register = () => {
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
             </g>
           </svg>
-          <input type="email" placeholder="mail@site.com" required />
+          <input type="email" name="email" placeholder="mail@site.com" />
         </label>
 
         <label className="input validator">
@@ -40,17 +44,10 @@ const Register = () => {
               <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
             </g>
           </svg>
-          <input
-            type="password"
-            required
-            placeholder="Password"
-            minLength="8"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
-          />
+          <input type="password" name="password" placeholder="Password" />
         </label>
 
-        <div className="btn btn-accent btn-wide my-4">Register</div>
+        <button className="btn btn-accent btn-wide my-4">Register</button>
       </form>
     </div>
   );
