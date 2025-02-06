@@ -13,9 +13,16 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    const terms = e.target.terms.checked;
+
     // reset error status
     setError("");
     setSuccess(false);
+
+    if (!terms) {
+      setError("Please accept our terms and condition!");
+      return;
+    }
 
     if (password.length < 6) {
       setError("Password should be 6 characters or longer!");
@@ -73,6 +80,14 @@ const SignUp = () => {
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="label cursor-pointer">
+                <input type="checkbox" name="terms" className="checkbox" />
+                <span className="label-text">
+                  Accept Our Terms and Conditions!
+                </span>
               </label>
             </div>
             <div className="form-control mt-6">
