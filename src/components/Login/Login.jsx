@@ -117,6 +117,12 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>
+
+            {success && (
+              <p className="font-bold text-green-600 pb-8 ps-8">
+                User login successfully!!
+              </p>
+            )}
           </div>
         </div>
       </div>
