@@ -10,6 +10,8 @@ import { useState } from "react";
 
 const Login = () => {
   const [success, setSuccess] = useState(false);
+  const [loginError, setLoginError] = useState("");
+
   const [user, setUser] = useState(null);
   const provider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -22,6 +24,7 @@ const Login = () => {
 
     // reset status
     setSuccess(false);
+    setLoginError("");
 
     // login user
     signInWithEmailAndPassword(auth, email, password)
@@ -31,6 +34,7 @@ const Login = () => {
       })
       .cath((error) => {
         console.log("Error", error.message);
+        setLoginError(error.message);
       });
   };
 
@@ -122,6 +126,10 @@ const Login = () => {
               <p className="font-bold text-green-600 pb-8 ps-8">
                 User login successfully!!
               </p>
+            )}
+
+            {loginError && (
+              <p className="font-bold text-red-500  pb-8 ps-8">{loginError}</p>
             )}
           </div>
         </div>
