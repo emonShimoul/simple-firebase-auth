@@ -20,9 +20,13 @@ const Login = () => {
     console.log(email, password);
 
     // login user
-    signInWithEmailAndPassword(auth, email, password).then((result) => {
-      console.log(result.user);
-    });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .cath((error) => {
+        console.log("Error", error.message);
+      });
   };
 
   const handleGoogleSignIn = () => {
