@@ -20,7 +20,6 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
 
     // reset status
     setSuccess(false);
@@ -32,9 +31,9 @@ const Login = () => {
         console.log(result.user);
         setSuccess(true);
       })
-      .cath((error) => {
-        console.log("Error", error.message);
+      .catch((error) => {
         setLoginError(error.message);
+        console.log("loginError");
       });
   };
 
