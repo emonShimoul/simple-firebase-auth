@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import auth from "../../firebase/firebase.init";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [success, setSuccess] = useState(false);
@@ -121,15 +122,27 @@ const Login = () => {
               </div>
             </form>
 
-            {success && (
-              <p className="font-bold text-green-600 pb-8 ps-8">
-                User login successfully!!
-              </p>
-            )}
+            <div>
+              {success && (
+                <p className="font-bold text-green-600 pb-8 ps-8">
+                  User login successfully!!
+                </p>
+              )}
 
-            {loginError && (
-              <p className="font-bold text-red-500  pb-8 ps-8">{loginError}</p>
-            )}
+              {loginError && (
+                <p className="font-bold text-red-500  pb-8 ps-8">
+                  {loginError}
+                </p>
+              )}
+
+              <p className="font-bold  pb-8 ps-8">
+                New to this website{" "}
+                <Link to="/register" className="text-blue-600 underline">
+                  Sign Up
+                </Link>{" "}
+                !!
+              </p>
+            </div>
           </div>
         </div>
       </div>
