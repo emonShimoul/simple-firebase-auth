@@ -9,6 +9,7 @@ import auth from "../../firebase/firebase.init";
 import { useState } from "react";
 
 const Login = () => {
+  const [success, setSuccess] = useState(false);
   const [user, setUser] = useState(null);
   const provider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -19,10 +20,14 @@ const Login = () => {
     const password = e.target.password.value;
     console.log(email, password);
 
+    // reset status
+    setSuccess(false);
+
     // login user
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result.user);
+        setSuccess(true);
       })
       .cath((error) => {
         console.log("Error", error.message);
