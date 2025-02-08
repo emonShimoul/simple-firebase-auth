@@ -3,6 +3,7 @@ import {
   GoogleAuthProvider,
   signOut,
   GithubAuthProvider,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import auth from "../../firebase/firebase.init";
 import { useState } from "react";
@@ -17,6 +18,11 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+
+    // login user
+    signInWithEmailAndPassword(auth, email, password).then((result) => {
+      console.log(result.user);
+    });
   };
 
   const handleGoogleSignIn = () => {
