@@ -29,23 +29,23 @@ const Login = () => {
     // login user
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         setSuccess(true);
       })
       .catch((error) => {
         setLoginError(error.message);
-        console.log("loginError");
+        // console.log("loginError");
       });
   };
 
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         setUser(result.user);
       })
       .catch((error) => {
-        console.log("Error: ", error);
+        // console.log("Error: ", error);
         setUser(null);
       });
   };
@@ -53,11 +53,11 @@ const Login = () => {
   const handleGithubSignIn = () => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         setUser(result.user);
       })
       .catch((error) => {
-        console.log("Error: ", error);
+        // console.log("Error: ", error);
         setUser(null);
       });
   };
@@ -65,12 +65,12 @@ const Login = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log("Sign-out successful");
+        // console.log("Sign-out successful");
         setUser(null);
-        console.log(user);
+        // console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
