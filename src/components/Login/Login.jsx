@@ -132,8 +132,8 @@ const Login = () => {
               )}
 
               <p className="font-bold  pb-8 ps-8">
-                New to this website{" "}
-                <Link to="/register" className="text-blue-600 underline">
+                New to this website?{" "}
+                <Link to="/signup" className="text-blue-600 underline">
                   Sign Up
                 </Link>{" "}
                 !!

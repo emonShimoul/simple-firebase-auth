@@ -102,8 +102,12 @@ const SignUp = () => {
             </p>
           )}
 
-          <p className="m-2">
-            Already have an account? Please <Link to="/login">Login</Link>
+          <p className="ms-8 mb-8 font-bold">
+            Already have an account? Please{" "}
+            <Link className="text-blue-600 underline" to="/login">
+              Login
+            </Link>{" "}
+            !!
           </p>
         </div>
       </div>
