@@ -4,14 +4,16 @@ import {
   signOut,
   GithubAuthProvider,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import auth from "../../firebase/firebase.init";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   const [success, setSuccess] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const emailRef = useRef();
 
   const [user, setUser] = useState(null);
   const provider = new GoogleAuthProvider();
@@ -74,6 +76,18 @@ const Login = () => {
       });
   };
 
+  const handleForgetPassword = () => {
+    console.log("handle password!!", emailRef.current.value);
+    const email = emailRef.current.value;
+    if (!email) {
+      console.log("Please provide a valid email address!");
+    } else {
+      sendPasswordResetEmail(auth, email).then(() => {
+        alert("Reset email sent! Please check your email!!");
+      });
+    }
+  };
+
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
@@ -96,6 +110,7 @@ const Login = () => {
                   type="email"
                   placeholder="email"
                   name="email"
+                  ref={emailRef}
                   className="input input-bordered"
                   required
                 />
@@ -111,7 +126,7 @@ const Login = () => {
                   className="input input-bordered"
                   required
                 />
-                <label className="label">
+                <label onClick={handleForgetPassword} className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
