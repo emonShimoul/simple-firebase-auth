@@ -30,7 +30,11 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result.user);
-        setSuccess(true);
+        if (!result.user.emailVerified) {
+          setLoginError("PLease verify your email address !");
+        } else {
+          setSuccess(true);
+        }
       })
       .catch((error) => {
         setLoginError(error.message);
@@ -131,7 +135,7 @@ const Login = () => {
                 </p>
               )}
 
-              <p className="font-bold  pb-8 ps-8">
+              <p className="font-bold pb-8 ps-8">
                 New to this website?{" "}
                 <Link to="/signup" className="text-blue-600 underline">
                   Sign Up
