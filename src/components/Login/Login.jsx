@@ -31,7 +31,7 @@ const Login = () => {
     // login user
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         if (!result.user.emailVerified) {
           setLoginError("PLease verify your email address !");
         } else {

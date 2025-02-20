@@ -62,7 +62,7 @@ const SignUp = () => {
           .catch((error) => console.log("User profile update error: ", error));
       })
       .catch((error) => {
-        console.log("ERROR", error);
+        // console.log("ERROR", error);
         setError(error.message);
         setSuccess(false);
       });
